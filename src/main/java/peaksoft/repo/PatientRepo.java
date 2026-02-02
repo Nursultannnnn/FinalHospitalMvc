@@ -10,8 +10,14 @@ import java.util.List;
 @Transactional
 public interface PatientRepo {
     void savePatient(Patient patient);
+
     List<Patient> getAllPatients();
+
     Patient getById(Long id);
-    void updatePatient(Long id,Patient newPatient);
+
+    void updatePatient(Long id, Patient newPatient);
+
     void deletePatient(Long id);
+
+    List<Patient> getAllPatientsByHospitalId(Long hospitalId);
 }

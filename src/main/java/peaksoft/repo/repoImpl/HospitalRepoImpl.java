@@ -13,30 +13,37 @@ import java.util.List;
 @Transactional // Желательно добавить транзакционность здесь или в сервисе
 @RequiredArgsConstructor
 public class HospitalRepoImpl implements HospitalRepo {
+
     @PersistenceContext
     private final EntityManager entityManager;
+
     @Override
     public void saveHospital(Hospital hospital) {
+        entityManager.persist(hospital);
 
     }
 
     @Override
     public List<Hospital> getAllHospitals() {
-        return null;
+        return entityManager.createQuery("select h from Hospital h", Hospital.class).getResultList();
     }
 
     @Override
     public Hospital getById(Long id) {
-        return null;
-    }
+        return entityManager.find(Hospital.class, id);    }
 
     @Override
     public void updateHospital(Long id, Hospital newHospital) {
+        Hospital hospital = entityManager.find(Hospital.class, id);
+        hospital.setName(newHospital.getName());
+        hospital.setAddress(newHospital.getAddress());
+        //hospital.setImage(newHospital.getImage());
+        entityManager.merge(hospital);
 
     }
 
     @Override
     public void deleteHospital(Long id) {
-
+        entityManager.remove(entityManager.find(Hospital.class, id));
     }
 }

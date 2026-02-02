@@ -5,6 +5,7 @@ import lombok.*;
 import lombok.experimental.FieldDefaults;
 
 import java.util.List;
+import java.util.Set;
 
 @Entity
 @Table(name = "hospitals")
@@ -28,10 +29,10 @@ public class Hospital {
     Long id;
     String name;
     String address;
-    @OneToMany(mappedBy = "hospital", cascade = {CascadeType.DETACH, CascadeType.MERGE, CascadeType.REFRESH})
-    List<Doctor> doctors;
-    @OneToMany(mappedBy = "hospital", cascade = {CascadeType.DETACH, CascadeType.MERGE, CascadeType.REFRESH})
-    List<Patient> patients;
+    @OneToMany(mappedBy = "hospital", cascade = {CascadeType.DETACH, CascadeType.MERGE, CascadeType.REFRESH}, fetch = FetchType.EAGER)
+    Set<Doctor> doctors;
+    @OneToMany(mappedBy = "hospital", cascade = {CascadeType.DETACH, CascadeType.MERGE, CascadeType.REFRESH}, fetch = FetchType.EAGER)
+    Set<Patient> patients;
     @OneToMany(mappedBy = "hospital", cascade = {CascadeType.DETACH, CascadeType.MERGE, CascadeType.REFRESH})
     List<Department> departments;
     @OneToMany(mappedBy = "hospital", cascade = {CascadeType.DETACH, CascadeType.MERGE, CascadeType.REFRESH})

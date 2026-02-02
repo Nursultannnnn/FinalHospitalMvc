@@ -14,4 +14,7 @@ public interface DoctorRepo {
     Doctor getById(Long id);
     void updateDoctor(Long id,Doctor newDoctor);
     void deleteDoctor(Long id);
+    // ... старые методы ...
+    List<Doctor> getAllDoctorsByHospitalId(Long hospitalId);
+
 }

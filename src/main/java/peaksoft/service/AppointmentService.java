@@ -1,16 +1,14 @@
 package peaksoft.service;
 
-import jakarta.transaction.Transactional;
-import org.springframework.stereotype.Repository;
 import peaksoft.entity.Appointment;
-
 import java.util.List;
-@Repository
-@Transactional
+
 public interface AppointmentService {
-    void saveAppointment(Appointment appointment);
-    List<Appointment> getAllAppointments();
+    // Метод save принимает ID всех участников
+    void saveAppointment(Long hospitalId, Long patientId, Long doctorId, Long departmentId, Appointment appointment);
+
+    List<Appointment> getAllAppointmentsByHospitalId(Long hospitalId);
     Appointment getById(Long id);
-    void updateAppointment(Long id,Appointment newAppointment);
+    void updateAppointment(Long id, Appointment newAppointment); // Можно упростить
     void deleteAppointment(Long id);
 }

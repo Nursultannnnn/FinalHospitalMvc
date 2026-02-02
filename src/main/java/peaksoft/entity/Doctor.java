@@ -32,13 +32,20 @@ public class Doctor {
     @Column(unique = true, nullable = false) // Уникальный email
     String email;
 
-    @ManyToMany(cascade = {CascadeType.DETACH, CascadeType.REFRESH, CascadeType.MERGE})
-    @JoinTable( // Для ManyToMany лучше явно указать таблицу связи
-            name = "doctors_departments",
-            joinColumns = @JoinColumn(name = "doctor_id"),
-            inverseJoinColumns = @JoinColumn(name = "department_id")
-    )
-    List<Department> departments;
+//    @ManyToMany(cascade = {CascadeType.DETACH, CascadeType.REFRESH, CascadeType.MERGE})
+//    @JoinTable( // Для ManyToMany лучше явно указать таблицу связи
+//            name = "doctors_departments",
+//            joinColumns = @JoinColumn(name = "doctor_id"),
+//            inverseJoinColumns = @JoinColumn(name = "department_id")
+//    )
+//    List<Department> departments;
+@ManyToMany(cascade = {CascadeType.DETACH, CascadeType.REFRESH, CascadeType.MERGE}, fetch = FetchType.EAGER) // <--- ДОБАВЬ EAGER
+@JoinTable(
+        name = "doctors_departments",
+        joinColumns = @JoinColumn(name = "doctor_id"),
+        inverseJoinColumns = @JoinColumn(name = "department_id")
+)
+List<Department> departments;
 
     @OneToMany(mappedBy = "doctor", cascade = {CascadeType.DETACH, CascadeType.REFRESH, CascadeType.MERGE})
     List<Appointment> appointments;

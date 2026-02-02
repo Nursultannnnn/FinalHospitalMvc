@@ -13,4 +13,7 @@ public interface AppointmentRepo {
     Appointment getById(Long id);
     void updateAppointment(Long id,Appointment newAppointment);
     void deleteAppointment(Long id);
+
+    // Добавь этот метод
+    List<Appointment> getAllAppointmentsByHospitalId(Long hospitalId);
 }

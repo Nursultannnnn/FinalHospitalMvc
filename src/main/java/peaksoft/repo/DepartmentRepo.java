@@ -14,4 +14,6 @@ public interface DepartmentRepo {
     Department getById(Long id);
     void updateDepartment(Long id,Department newDepartment);
     void deleteDepartment(Long id);
+    // ... старые методы ...
+    List<Department> getAllDepartmentByHospitalId(Long hospitalId);
 }
