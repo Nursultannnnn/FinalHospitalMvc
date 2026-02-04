@@ -8,7 +8,8 @@ import java.util.List;
 @Repository
 @Transactional
 public interface AppointmentRepo {
-    void saveAppointment(Appointment appointment);
+//
+    void saveAppointment(Long hospitalId, Long patientId, Long doctorId, Long departmentId, Appointment appointment);
     List<Appointment> getAllAppointments();
     Appointment getById(Long id);
     void updateAppointment(Long id,Appointment newAppointment);

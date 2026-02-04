@@ -22,12 +22,9 @@ public class AppointmentServiceImpl implements AppointmentService {
 
     @Override
     public void saveAppointment(Long hospitalId, Long patientId, Long doctorId, Long departmentId, Appointment appointment) {
-        appointment.setHospital(hospitalRepo.getById(hospitalId));
-        appointment.setPatient(patientRepo.getById(patientId));
-        appointment.setDoctor(doctorRepo.getById(doctorId));
-        appointment.setDepartment(departmentRepo.getById(departmentId));
 
-        appointmentRepo.saveAppointment(appointment);
+
+        appointmentRepo.saveAppointment(hospitalId ,patientId,  doctorId,  departmentId, appointment);
     }
 
     @Override

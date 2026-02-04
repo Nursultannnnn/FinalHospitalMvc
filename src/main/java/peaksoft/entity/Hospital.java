@@ -19,11 +19,11 @@ public class Hospital {
     @Id
     @GeneratedValue(
             strategy = GenerationType.SEQUENCE,
-            generator = "appointment_gen"
+            generator = "hospital_gen"
     )
     @SequenceGenerator(
-            name = "appointment_gen",
-            sequenceName = "appointment_seq",
+            name = "hospital_gen",
+            sequenceName = "hospital_seq",
             allocationSize = 1
     )
     Long id;

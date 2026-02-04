@@ -18,11 +18,16 @@ public class AppointmentRepoImpl implements AppointmentRepo {
     @PersistenceContext
     private final EntityManager entityManager;
 
-    @Override
-    public void saveAppointment(Appointment appointment) {
-        entityManager.persist(appointment);
-    }
+//    @Override
+//    public void saveAppointment(Appointment appointment) {
+//        entityManager.persist(appointment);
+//    }
+@Override
+public void saveAppointment(Long hospitalId, Long patientId, Long doctorId, Long departmentId, Appointment appointment) {
 
+
+
+}
     @Override
     public List<Appointment> getAllAppointmentsByHospitalId(Long hospitalId) {
         // УСЛОВИЕ 3-II: Сортировка (новые сверху) - "order by a.id desc"
